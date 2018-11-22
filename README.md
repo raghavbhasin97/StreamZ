@@ -16,7 +16,7 @@ An iOS app to browse and stream movies on our device. To prevent any copyright i
 <kbd><img src="img/details.png" width="180" height="310"></kbd>
 
 #### Genre
-<kbd><img src="img/genere.png" width="180" height="310"></kbd>
+<kbd><img src="img/genre.png" width="180" height="310"></kbd>
 
 #### Search
 <kbd><img src="img/search1.png" width="180" height="310"></kbd>&nbsp;&nbsp;&nbsp;&nbsp;<kbd><img src="img/search2.png" width="180" height="310"></kbd>
