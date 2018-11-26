@@ -29,7 +29,7 @@ An iOS app to browse and stream movies on our device. To prevent any copyright i
 - [x] Get details about the movie such as Rating, Genere, Year, Summary, Rating and popularity.
 - [x] Stream the movie on your device (trailer from youtube).
 - [x] Share movies with your friends.
-
+- [x] Support for streaming movies using Chrome Cast.
 
 
 ## Requirements

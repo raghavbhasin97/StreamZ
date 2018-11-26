@@ -8,5 +8,6 @@ target 'Streamz' do
   # Pods for Streamz
 pod 'Alamofire'
 pod 'youtube-ios-player-helper'  
+pod ‘google-cast-sdk’
 
 end

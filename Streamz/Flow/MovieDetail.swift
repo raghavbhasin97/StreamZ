@@ -1,4 +1,5 @@
 import UIKit
+import GoogleCast
 
 
 class MovieDetail: UIViewController {
@@ -65,7 +66,11 @@ class MovieDetail: UIViewController {
         view.backgroundColor = .background
         setupBackdrop()
         setupMovieView()
-        navigationItem.rightBarButtonItem = shareButton
+        //Setup Cast Button
+        let castButton = GCKUICastButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        castButton.tintColor = .white
+        let castBarButtonItem = UIBarButtonItem(customView: castButton)
+        navigationItem.rightBarButtonItems = [shareButton, castBarButtonItem]
     }
     
     func addFade() {
@@ -103,6 +108,7 @@ class MovieDetail: UIViewController {
         super.viewDidLayoutSubviews()
         gradient.frame = backdropImage.bounds
     }
+    
 }
 
 extension MovieDetail: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

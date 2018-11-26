@@ -1,20 +1,31 @@
 PODS:
   - Alamofire (4.7.3)
+  - google-cast-sdk (4.3.2):
+    - google-cast-sdk/Core (= 4.3.2)
+    - Protobuf (~> 3.0)
+  - google-cast-sdk/Core (4.3.2):
+    - Protobuf (~> 3.0)
+  - Protobuf (3.6.1)
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - Alamofire
+  - google-cast-sdk
   - youtube-ios-player-helper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - google-cast-sdk
+    - Protobuf
     - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  google-cast-sdk: 845b740ef8c47919185651ba62b36b2ed0cfab40
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: c58ef5de561ca713ee0f6548cc2b6f79d0880b0b
+PODFILE CHECKSUM: 36d4fef95cc8897d4d47879668959d39d9dd31fb
 
 COCOAPODS: 1.5.3

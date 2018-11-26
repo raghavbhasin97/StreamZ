@@ -210,6 +210,7 @@
 				3CC8C2EB21A4F9680096DF94 /* Frameworks */,
 				3CC8C2EC21A4F9680096DF94 /* Resources */,
 				60DE50BF5823EB3F56146C7D /* [CP] Embed Pods Frameworks */,
+				A07691B043999E89FDB5C6BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,16 +275,38 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Streamz/Pods-Streamz-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Streamz/Pods-Streamz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A07691B043999E89FDB5C6BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Streamz/Pods-Streamz-resources.sh",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.3.2_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
+				"${PODS_ROOT}/google-cast-sdk/GoogleCastSDK-ios-4.3.2_static/GoogleCast.framework/GoogleCastUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Streamz/Pods-Streamz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E8F2228040F5ADA449F6E66A /* [CP] Check Pods Manifest.lock */ = {

@@ -1,4 +1,5 @@
 import UIKit
+import GoogleCast
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setupChromeCast()
         setupAppearance()
         loadHome()
         return true
@@ -48,5 +50,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
     }
+    
+    fileprivate func setupChromeCast() {
+        let appId = Bundle.main.infoDictionary?["Chrome Cast Id"] as? String ?? ""
+        let discoveryCriteria = GCKDiscoveryCriteria(applicationID: appId)
+        let castOptions = GCKCastOptions(discoveryCriteria: discoveryCriteria)
+        GCKCastContext.setSharedInstanceWith(castOptions)
+        GCKLogger.sharedInstance().delegate = self
+    }
 }
 
+
+extension AppDelegate: GCKLoggerDelegate {
+    
+    func logMessage(_ message: String, at level: GCKLoggerLevel, fromFunction function: String, location: String) {
+        print("Message from Chromecast = \(message)")
+    }
+}
