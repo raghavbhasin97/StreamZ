@@ -192,3 +192,20 @@ func searchMovies(term: String, completion: (([[String: Any]]) -> Void)? = nil) 
         }
     }
 }
+
+
+func getRatings(movieId: String, page: String ,completion: (([[String: Any]]) -> Void)? = nil) {
+     let url = "https://api.themoviedb.org/3/movie/" + movieId + "/reviews"
+     let parameters = ["api_key": apiKey,
+                       "language": "en-US",
+                       "page": page
+                       ]
+    Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: nil).responseJSON { (res) in
+        if let data = res.result.value as? [String: Any] {
+            if let reviews = data["results"] as? [[String: Any]] {
+                 completion?(reviews)
+            }
+        }
+    }
+    
+}

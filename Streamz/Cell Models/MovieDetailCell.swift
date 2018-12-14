@@ -1,6 +1,10 @@
 import UIKit
 import youtube_ios_player_helper
 
+protocol MoviewDetailReviewDelegate {
+    func reviewComments(movieId: String)
+}
+
 class MovieDetailCell: BaseCollectionViewCell {
     var movie: [String: Any]? {
         didSet {
@@ -9,6 +13,8 @@ class MovieDetailCell: BaseCollectionViewCell {
             }
         }
     }
+    
+    var delegateReview: MoviewDetailReviewDelegate?
     
     let loader: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView(style: .white)
@@ -43,11 +49,26 @@ class MovieDetailCell: BaseCollectionViewCell {
         return collection
     }()
 
+    lazy var reviewsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "review").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(reviewClicked), for: .touchUpInside)
+        return button
+    }()
+    
     fileprivate func setupPlay() {
         playButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(playButton)
         center_X(item: playButton)
         playButton.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
+    }
+    
+    fileprivate func setupReview() {
+        addSubview(reviewsButton)
+        reviewsButton.leftAnchor.constraint(equalTo: playButton.rightAnchor, constant: 40).isActive = true
+        reviewsButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor).isActive = true
     }
     
     fileprivate func setupSummary() {
@@ -96,6 +117,7 @@ class MovieDetailCell: BaseCollectionViewCell {
     override func setup() {
         backgroundColor = .clear
         setupPlay()
+        setupReview()
         setupSummary()
         setupInformation()
         setupSeperator()
@@ -221,6 +243,12 @@ extension MovieDetailCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = moviesList[indexPath.item]["id"] as! Int
         delegate?.didSelectMovie(movieId: String(id))
+    }
+    
+    @objc fileprivate func reviewClicked() {
+        guard let movie = movie else { return }
+        let movieId = movie["id"] as! Int
+        delegateReview?.reviewComments(movieId: String(movieId))
     }
 }
 

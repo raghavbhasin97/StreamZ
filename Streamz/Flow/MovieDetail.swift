@@ -120,6 +120,7 @@ extension MovieDetail: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MovieDetailCell
         cell.movie = movie
         cell.delegate = self
+        cell.delegateReview = self
         return cell
     }
     
@@ -153,3 +154,17 @@ extension MovieDetail: CategoryMovieSelectDelegate {
     
 }
 
+
+extension MovieDetail: MoviewDetailReviewDelegate {
+    func reviewComments(movieId: String) {
+        let controller = Review()
+        if let movieId = movie?["id"] as? Int {
+            getRatings(movieId: String(movieId), page: "1") {[unowned self] (reviews) in
+                controller.reviews = reviews
+                controller.titleView.text = self.movie?["title"] as? String
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+    }
+    
+}
